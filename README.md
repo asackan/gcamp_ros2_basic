@@ -18,6 +18,11 @@ For the Python version, it is recommended to use 3.8.
 If you proceed with version 3.10, you might encounter warnings related to the `setup.py` file.
 To resolve this, it is suggested to set the `setuptools` version to 58.2.0 or lower.
 
+lastly, I haven't made any modifications to the instructions for the Foxy version, and I have no plans to do so in the future.
+Please be careful when installing dependencies.
+
+---
+
 There's Youtube Lecture note for all codes, all packages (**Written in Korean**)
 
 - [Youtube Playlist Link](https://www.youtube.com/watch?v=X9uYIumhU8E&list=PLieE0qnqO2kTNCznjLX_AaXe2hNJ-IpVQ)
