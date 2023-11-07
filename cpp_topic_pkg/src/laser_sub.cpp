@@ -20,16 +20,16 @@ using LaserScan = sensor_msgs::msg::LaserScan;
 
 class LaserSub : public rclcpp::Node {
 private:
-  rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr m_sub;
+  rclcpp::Subscription<LaserScan>::SharedPtr m_sub;
 
 public:
   LaserSub() : Node("topic_sub_oop_node") {
-    m_sub = this->create_subscription<sensor_msgs::msg::LaserScan>(
+    m_sub = this->create_subscription<LaserScan>(
         "skidbot/scan", 10,
-        std::bind(&LaserSub::sub_callback, this, std::placeholders::_1));
+        [this](const LaserScan::SharedPtr msg){sub_callback(msg);} );
   }
 
-  void sub_callback(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
+  void sub_callback(const LaserScan::SharedPtr msg) {
     // std::cout << (msg->ranges).size() << std::endl;
 
     // for (auto e : msg->ranges)

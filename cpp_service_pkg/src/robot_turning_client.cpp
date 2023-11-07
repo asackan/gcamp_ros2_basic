@@ -78,7 +78,7 @@ int main(int argc, char **argv)
 
   // Wait for the result.
   if (rclcpp::spin_until_future_complete(basic_service_client, result) ==
-      rclcpp::executor::FutureReturnCode::SUCCESS)
+      rclcpp::FutureReturnCode::SUCCESS)
     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Result : %s",
                 result.get()->success ? "True" : "False");
   else

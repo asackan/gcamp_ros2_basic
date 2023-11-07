@@ -19,7 +19,9 @@
 
 using Twist = geometry_msgs::msg::Twist;
 using LaserScan = sensor_msgs::msg::LaserScan;
-class ParkingNode : public rclcpp::Node {
+
+class ParkingNode : public rclcpp::Node
+{
 private:
   rclcpp::Publisher<Twist>::SharedPtr m_pub;
   rclcpp::Subscription<LaserScan>::SharedPtr m_sub;
@@ -47,7 +49,7 @@ public:
     }
   }
 
-  void move_robot(const float &forward_distance) {
+  void move_robot(const float & forward_distance) {
     m_twist_msg.linear.x = 0.5;
     m_twist_msg.angular.z = 0.0;
     m_pub->publish(m_twist_msg);

@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <memory>
-#include "rclcpp/rclcpp.hpp"
+#include <stdio.h>
+#include <memory.h>
+#include <rclcpp/rclcpp.hpp>
 
 class Talker : public rclcpp::Node {
 private:
@@ -31,7 +32,7 @@ public:
     RCLCPP_WARN(this->get_logger(), "Node Constructor");
 
     m_timer = this->create_wall_timer(std::chrono::milliseconds(500),
-                                      std::bind(&Talker::timer_callback, this));
+                                      [this]{timer_callback();})
   }
 
   ~Talker() {

@@ -6,7 +6,7 @@
 # - Addison Sears-Collins
 # - https://automaticaddison.com
 
-import cv2
+import cv2  
 
 from cv_bridge import (
     CvBridge,

@@ -88,9 +88,7 @@ public:
     m_action_client->async_send_goal(goal_msg, send_goal_options);
   }
 
-  void goal_response_callback(
-      std::shared_future<GoalHandleFibonacci::SharedPtr> future) {
-    goal_handle = future.get();
+  void goal_response_callback(const GoalHandleFibonacci::SharedPtr goal_handle) {
 
     if (!goal_handle)
       RCLCPP_ERROR(get_logger(), "Goal was rejected by server");
@@ -146,14 +144,14 @@ int main(int argc, char **argv) {
       auto wait_result = rclcpp::spin_until_future_complete(
           client_node, result_future, std::chrono::seconds(3));
 
-      if (wait_result == rclcpp::executor::FutureReturnCode::TIMEOUT) {
+      if (wait_result == rclcpp::FutureReturnCode::TIMEOUT) {
         RCLCPP_INFO(client_node->get_logger(), "Canceling goal");
         // Cancel the goal since it is taking too long
 
         auto cancel_result_future = client_node->get_cancel_result_future();
         if (rclcpp::spin_until_future_complete(client_node,
                                                cancel_result_future) !=
-            rclcpp::executor::FutureReturnCode::SUCCESS) {
+            rclcpp::FutureReturnCode::SUCCESS) {
           RCLCPP_ERROR(client_node->get_logger(), "failed to cancel goal");
           rclcpp::shutdown();
           return 1;
@@ -163,7 +161,7 @@ int main(int argc, char **argv) {
 
         while (rclcpp::ok())
           rclcpp::spin_some(client_node);
-      } else if (wait_result != rclcpp::executor::FutureReturnCode::SUCCESS) {
+      } else if (wait_result != rclcpp::FutureReturnCode::SUCCESS) {
         RCLCPP_ERROR(client_node->get_logger(), "failed to get result");
         rclcpp::shutdown();
         return 1;

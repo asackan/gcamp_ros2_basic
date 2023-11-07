@@ -13,8 +13,8 @@
 // limitations under the License.
 
 #include <memory>
-#include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/int32.hpp"
+#include <rclcpp/rclcpp.hpp>
+#include <std_msgs/msg/int32.hpp>
 
 class CounterPub : public rclcpp::Node {
 private:

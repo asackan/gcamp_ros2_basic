@@ -51,14 +51,14 @@ def main(args=None):
 
     cmd_vel_publisher = CmdVelPublisher()
 
-    rclpy.spin(cmd_vel_publisher)
+    try:
+        rclpy.spin(cmd_vel_publisher)
+    except KeyboardInterrupt:
+        cmd_vel_publisher.stop_robot()
+        cmd_vel_publisher.get_logger().info('\n==== Stop Publishing ====')
 
-    cmd_vel_publisher.stop_robot()
-    cmd_vel_publisher.get_logger().info('\n==== Stop Publishing ====')
-
-    cmd_vel_publisher.destroy_node()
-    rclpy.shutdown()
-
+        cmd_vel_publisher.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == '__main__':
     main()

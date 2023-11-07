@@ -31,7 +31,7 @@ public:
 
     m_pub = create_publisher<geometry_msgs::msg::Twist>("skidbot/cmd_vel", 10);
     m_timer = create_wall_timer(std::chrono::milliseconds(100),
-                                std::bind(&TwistPub::timer_callback, this));
+                                [this]{timer_callback();} );
   }
 
   void move_robot() {
@@ -61,8 +61,8 @@ int main(int argc, char **argv) {
 
   while ((t_now - t_start).seconds() < stop_time) {
     t_now = twist_pub->now();
-    // rclcpp::spin_some(twist_pub);
-    twist_pub->move_robot();
+    rclcpp::spin_some(twist_pub);
+    // twist_pub->move_robot();
 
     RCLCPP_INFO(twist_pub->get_logger(), "%f Seconds Passed", (t_now - t_start).seconds());
   }
