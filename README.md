@@ -4,7 +4,7 @@
 
 > Feel Free to use this repo as an template code 😀
 
-### News
+## Note
 
 I followed this tutorial in the Ubuntu 22.04 ROS-Humble environment and made some modifications to address syntax changes.
 
@@ -22,6 +22,8 @@ lastly, I haven't made any modifications to the instructions for the Foxy versio
 Please be careful when installing dependencies.
 
 ---
+
+### News
 
 There's Youtube Lecture note for all codes, all packages (**Written in Korean**)
 
