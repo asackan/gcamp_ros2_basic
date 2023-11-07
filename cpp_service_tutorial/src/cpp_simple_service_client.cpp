@@ -18,7 +18,7 @@ send_request(rclcpp::Node::SharedPtr node,
   auto result = client->async_send_request(request);
   // Wait for the result.
   if (rclcpp::spin_until_future_complete(node, result) ==
-      rclcpp::executor::FutureReturnCode::SUCCESS) {
+      rclcpp::FutureReturnCode::SUCCESS) {
     RCLCPP_INFO(node->get_logger(), "Client request->model_name : %s",
                 request->model_name.c_str());
     return result.get();

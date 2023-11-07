@@ -6,19 +6,39 @@
 
 ## Note
 
-I followed this tutorial in the Ubuntu 22.04 ROS-Humble environment and made some modifications to address syntax changes.
+I followed this tutorial in the Ubuntu 22.04 ROS-Humble environment
+
+and made some modifications to address syntax changes.
 
 One of the notable changes is in the executor syntax:
-From `rclcpp::executor::FutureReturnCode::SUCCESS` >> `rclcpp::FutureReturnCode::SUCCESS`, which changed from Foxy to Humble.
 
-Additionally, there were changes in functions that used `std::future` in callbacks, which now accept `const SharedPtr &`.
-When I made these few modifications, I confirmed that there were no issues with execution.
+From `rclcpp::executor::FutureReturnCode::SUCCESS` >> `rclcpp::FutureReturnCode::SUCCESS`
+
+, which changed from Foxy to Humble.
+
+Additionally
+
+there were changes in functions that used `std::future` in callbacks,
+
+which now accept `const SharedPtr &`.
+
+
+When I made these few modifications,
+
+I confirmed that there were no issues with execution.
 
 For the Python version, it is recommended to use 3.8.
-If you proceed with version 3.10, you might encounter warnings related to the `setup.py` file.
+
+If you proceed with version 3.10,
+
+you might encounter warnings related to the `setup.py` file.
+
 To resolve this, it is suggested to set the `setuptools` version to 58.2.0 or lower.
 
-lastly, I haven't made any modifications to the instructions for the Foxy version, and I have no plans to do so in the future.
+lastly, I haven't made any modifications to the instructions for the Foxy version,
+
+and I have no plans to do so in the future.
+
 Please be careful when installing dependencies.
 
 ---
